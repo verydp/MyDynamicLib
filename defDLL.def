@@ -1,0 +1,31 @@
+LIBRARY defDLL
+
+EXPORTS
+	plus			
+	dim				
+	func1			
+	func2			
+	func3			
+	ptre_lfanew
+	ptrPE
+	ptrOptionPE
+	ptrAddressOfEntryPoint
+	ptrSizeOfImage
+	ptrSizeOfHeaders
+	ptrSizeOfOptionalHeader
+	ptrSection
+	SectionOffset
+	ptrVirtualAddress
+	ptrSizeOfRawData
+	ptrPhysicalAddress
+	ptrPointerToRawData
+	ptrCharacteristics
+	ptrNumberOfSection
+	ptrImageBase
+	FileToBuffer
+	NewBuffer
+	FbufferToNbuffer
+	MemBufferToFile
+	BufferToFile
+	RVA_TO_FOA
+	FOA_TO_RVA
