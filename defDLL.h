@@ -31,5 +31,8 @@ extern "C" {
 	void BufferToFile(char* fbuffer, char fpath[]);
 	int RVA_TO_FOA(char* buffer, int rva);
 	int FOA_TO_RVA(char* buffer, int foa);
+
+	void showstring(char* ptrString);
+	int StringCMP(char* str1, char* str2);
 }
 

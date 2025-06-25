@@ -29,3 +29,5 @@ EXPORTS
 	BufferToFile
 	RVA_TO_FOA
 	FOA_TO_RVA
+	showstring
+	StringCMP

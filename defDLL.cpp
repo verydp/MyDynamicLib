@@ -399,5 +399,35 @@ int FOA_TO_RVA(char* buffer, int foa) {
 	return NULL;
 }
 
+//传入字符串指针，打印该字符串
+void showstring(char* ptrString) {
+	for (int x = 0; *(ptrString + x) != 0; x++) {
+		printf("%c", *(ptrString + x));
+	}
+	printf("\n");
+}
+
+//判断两个字符串是否相等
+int StringCMP(char* str1, char* str2) {
+	int x;
+	x = 0;
+	//开始判断函数名和传入的两个参数是否相等。
+	//showstring(str1);
+	if (strlen(str1) == strlen(str2)) {
+		while (x < strlen(str1)) {
+			if (*(str1 + x) == *(str2 + x)) {
+				x++;
+			}
+			else {
+				return 0;
+			}
+		}
+		return 1;
+	}
+	else {
+		//printf("name missed\n");
+		return 0;
+	}
+}
 
 
