@@ -359,7 +359,7 @@ int RVA_TO_FOA(char* buffer, int rva) {
 		SizeOfRawData = *ptrSizeOfRawData(ptrSection(buffer) + 40 * i);
 		PointerToRawData = *ptrPointerToRawData(ptrSection(buffer) + 40 * i);
 		//判断RVA是否在节范围里面
-		if (VirtualAddress < virtualaddress && virtualaddress < VirtualAddress + SizeOfRawData) {
+		if (VirtualAddress <= virtualaddress && virtualaddress <= VirtualAddress + SizeOfRawData) {
 			//用RVA - VirtualAddress + PointerToData = FOA
 			FOA = virtualaddress - VirtualAddress + PointerToRawData;
 			//printf("%x", FOA);
