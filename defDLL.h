@@ -23,6 +23,8 @@ extern "C" {
 	int* ptrCharacteristics(char* ptrSection);
 	short* ptrNumberOfSection(char* fbuffer);
 	int* ptrImageBase(char* fbuffer);
+	int* ptrMemoryAlignment(char* fbuffer);
+	int* ptrFileAlignment(char* fbuffer);
 
 	char* FileToBuffer(char fpath[]);
 	char* NewBuffer(int SizeOfImage);

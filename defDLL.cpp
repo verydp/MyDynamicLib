@@ -185,12 +185,27 @@ short* ptrNumberOfSection(char* fbuffer) {
 int* ptrImageBase(char* fbuffer) {
 	char* pOPE = ptrOptionPE(fbuffer);
 
-	int* pImageBase = (int*)(pOPE + 32);
+	int* pImageBase = (int*)(pOPE + 28);
 
 	return pImageBase;
 }
 
+int* ptrMemoryAlignment(char* fbuffer) {
+	char* pOPE = ptrOptionPE(fbuffer);
 
+	int* pMemoryAlignment = (int*)(pOPE + 32);
+
+	return pMemoryAlignment;
+}
+
+
+int* ptrFileAlignment(char* fbuffer) {
+	char* pOPE = ptrOptionPE(fbuffer);
+
+	int* pFileAlignment = (int*)(pOPE + 36);
+
+	return pFileAlignment;
+}
 
 //编写一个函数能自动将文件读到一块内存中，并且返回该块内存的指针
 char* FileToBuffer(char fpath[]) {
@@ -359,14 +374,14 @@ int RVA_TO_FOA(char* buffer, int rva) {
 		SizeOfRawData = *ptrSizeOfRawData(ptrSection(buffer) + 40 * i);
 		PointerToRawData = *ptrPointerToRawData(ptrSection(buffer) + 40 * i);
 		//判断RVA是否在节范围里面
-		if (VirtualAddress <= virtualaddress && virtualaddress <= VirtualAddress + SizeOfRawData) {
+		if (VirtualAddress <= virtualaddress && virtualaddress < VirtualAddress + SizeOfRawData) {
 			//用RVA - VirtualAddress + PointerToData = FOA
 			FOA = virtualaddress - VirtualAddress + PointerToRawData;
 			//printf("%x", FOA);
 			return FOA;
 		}
 	}
-	printf("VirtualAddress Error");
+	printf("Your Arg %x in RVA_TO_FOA() Address change defeat~\n", rva);
 	return NULL;
 }
 
@@ -388,14 +403,14 @@ int FOA_TO_RVA(char* buffer, int foa) {
 		SizeOfRawData = *ptrSizeOfRawData(ptrSection(buffer) + 40 * i);
 		PointerToRawData = *ptrPointerToRawData(ptrSection(buffer) + 40 * i);
 
-		if (PointerToRawData < foa && foa < PointerToRawData + SizeOfRawData) {
+		if (PointerToRawData <= foa && foa < PointerToRawData + SizeOfRawData) {
 			//用RVA - VirtualAddress + PointerToData = FOA
 			RVA = foa - PointerToRawData + VirtualAddress;
 			//printf("%x", FOA);
 			return RVA;
 		}
 	}
-	printf("Address change defeat~");
+	printf("Your Arg %x in FOA_TO_RVA() Address change defeat~\n");
 	return NULL;
 }
 

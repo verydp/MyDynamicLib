@@ -22,6 +22,8 @@ EXPORTS
 	ptrCharacteristics
 	ptrNumberOfSection
 	ptrImageBase
+	ptrMemoryAlignment
+	ptrFileAlignment
 	FileToBuffer
 	NewBuffer
 	FbufferToNbuffer
